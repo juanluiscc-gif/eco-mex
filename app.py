@@ -47,7 +47,7 @@ st.write("Los datos sin clasificar obedecen a errores en la toma de información
 
 st.subheader("Actividades de los sectores económicos en México")
 # Obtener sectores económicos únicos
-sectores = data_clean["sector_economico"].unique()
+sectores = data_clean[data_clean["sector_economico"]!= "sin clasificar"][data_clean["sector_economico"].unique() ]
 
 # Crear una gráfica para cada sector
 for sector in sectores:
@@ -68,29 +68,47 @@ for sector in sectores:
     st.pyplot(fig)
 
 # Comparación de economías entre estados
-st.title("Compara las actividades entre los estados O BIEN ECONOMÍA LOCAL")
+st.title("Revisa las actividades economicas en los estados por sector.")
 
-# 1 SELECTBOX PARA ELEGIR EL ESTADO
+# 1️ SELECTBOX PARA ELEGIR EL ESTADO
 estados = sorted(data_clean["estado"].unique())
 estado_sel = st.selectbox("Selecciona un estado", estados)
 
 # Filtrar por el estado seleccionado
-df_estado = data_clean[data_clean["estado"] == estado_sel]
+df_estado = data_clean[data_clean["estado"] == estado_sel].copy()
 
-# 2 SELECTBOX PARA ELEGIR EL SECTOR ECONÓMICO DISPONIBLE EN ESE ESTADO
-sectores = sorted(df_estado["sector_economico"].unique())
+# 2️ SELECTBOX PARA ELEGIR EL SECTOR ECONÓMICO DISPONIBLE EN ESE ESTADO
+sectores_validos = ["primario", "secundario", "terciario"]
+
+# Sectores válidos en el estado
+sectores = sorted(
+    df_estado[df_estado["sector_economico"].isin(sectores_validos)]["sector_economico"].unique())
+
+if not sectores:
+    st.warning("Este estado no contiene información de sectores permitidos.")
+    st.stop()
+
 sector_sel = st.selectbox("Selecciona un sector económico", sectores)
 
-# Filtrar por sector
+# Filtrar por sector elegido
 df_sector = df_estado[df_estado["sector_economico"] == sector_sel]
 
 # 3️ CONTAR ACTIVIDADES
 conteo_actividades = df_sector["actividad"].value_counts()
 
-st.subheader(f"Actividades económicas del sector **{sector_sel}** en **{estado_sel}**")
+st.subheader(f"Actividades económicas del sector **{sector_sel.capitalize()}** en **{estado_sel}**")
 
 # 4️ GRÁFICA CIRCULAR
 fig, ax = plt.subplots()
 ax.pie(conteo_actividades, labels=conteo_actividades.index, autopct="%1.1f%%")
-ax.axis("equal")  # Mantiene la forma circular
+ax.axis("equal")
 st.pyplot(fig)
+
+# 5️ APARTADO EXTRA: EMPRESAS SIN CLASIFICAR
+sin_clasificar = df_estado[df_estado["sector_economico"] == "sin clasificar"]
+
+if not sin_clasificar.empty:
+    total_sin_clasificar = len(sin_clasificar)
+    st.info(f"En este estado no se pudieron clasificar **{total_sin_clasificar}** empresas.")
+else:
+    st.success("En este estado todas las empresas fueron clasificadas correctamente.")
