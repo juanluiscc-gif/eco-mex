@@ -46,28 +46,51 @@ st.plotly_chart(fig)
 st.write("Los datos sin clasificar obedecen a errores en la toma de información por parte del gobierno mexicano.")
 
 st.subheader("Actividades de los sectores económicos en México")
-# Obtener sectores económicos únicos
-sectores = data_clean[data_clean["sector_economico"]!= "sin clasificar"][data_clean["sector_economico"].unique() ]
 
-# Crear una gráfica para cada sector
-for sector in sectores:
-    st.subheader(f"Sector: {sector}")
+# Trabajar sobre una copia para evitar SettingWithCopyWarning
+df = data_clean.copy()
 
-    # Filtrar actividades del sector actual
-    df_sector = data_clean[data_clean["sector_economico"] == sector]
+# Normalizar a minúsculas (por si hay mayúsculas/fuentes inconsistentes)
+df["sector_economico"] = df["sector_economico"].astype(str).str.lower()
+df["actividad"] = df["actividad"].astype(str)  # aseguramos texto en actividad
 
-    # Contar actividades
-    conteo_actividades = df_sector["actividad"].value_counts()
+# Obtener sectores únicos EXCLUYENDO "sin clasificar"
+sectores = sorted(
+    df.loc[df["sector_economico"] != "sin clasificar", "sector_economico"].unique()
+)
 
-    # Crear gráfica circular
-    fig, ax = plt.subplots()
-    ax.pie(conteo_actividades, labels=conteo_actividades.index, autopct="%1.1f%%")
-    ax.axis("equal")  # Para que sea circular
+# Si no hay sectores a mostrar, avisar y salir
+if not sectores:
+    st.warning("No hay sectores válidos para mostrar (todos son 'sin clasificar' o están vacíos).")
+else:
+    # Crear una gráfica para cada sector
+    for sector in sectores:
+        st.subheader(f"Sector: {sector.capitalize()}")
 
-    # Mostrar gráfica
-    st.pyplot(fig)
+        # Filtrar actividades del sector actual
+        df_sector = df[df["sector_economico"] == sector]
 
-# Comparación de economías entre estados
+        # Contar actividades
+        conteo_actividades = df_sector["actividad"].value_counts()
+
+        if conteo_actividades.empty:
+            st.info(f"No hay actividades registradas para el sector {sector}.")
+            continue
+
+        # Crear gráfica circular
+        fig, ax = plt.subplots()
+        ax.pie(conteo_actividades, labels=conteo_actividades.index, autopct="%1.1f%%")
+        ax.axis("equal")  # Para que sea circular
+
+        # Mostrar gráfica
+        st.pyplot(fig)
+
+# (Opcional) Mostrar cuántas filas son "sin clasificar" a nivel nacional
+total_sin_clasificar = len(df[df["sector_economico"] == "sin clasificar"])
+if total_sin_clasificar > 0:
+    st.info(f"En México hay {total_sin_clasificar} empresas que están 'sin clasificar'.")
+
+# Actividades por sector en los estados.
 st.title("Revisa las actividades economicas en los estados por sector.")
 
 # 1️ SELECTBOX PARA ELEGIR EL ESTADO
