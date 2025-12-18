@@ -31,7 +31,7 @@ with col3:
 
 st.subheader("Metodología del estudio")
 st.write("Para el presente estudio se obtuvieron los datos del “Sistema empresarial mexicano”, donde se hizo una limpieza de datos a fin de poder estudiar e ilustrar las actividades económicas registradas por el gobierno mexicano, y que se desarrollan en todo el pais, siendo su última actualización en junio de 2025.")
-st.divider()  # Línea separadora
+print()
 st.write("Una vez que se pudo identificar la cantidad de empresas registradas, se les asignó un sector económico, a fin de poder comparar diferentes localidades. Se logró limpíar y valorar un 87 % de las actividades registradas por el gobierno mexicano. Los datos abiertos están aquí: https://datos.gob.mx/dataset/sistema_informacion_empresarial_mexicano")
 
 st.divider()  # Línea separadora
