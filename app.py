@@ -7,7 +7,9 @@ data_clean = pd.read_csv('data_clean.csv')
 
 # Título de la aplicación
 st.title("Estudio de la economía formal mexicana")
-st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
+col1,col2 = st.columns([1,2])
+with col2:
+    st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
 
 # Crear tres columnas para los botones
 col1, col2, col3 = st.columns(3)
@@ -139,4 +141,6 @@ if not sin_clasificar.empty:
 else:
     st.success("En este estado todas las empresas fueron clasificadas correctamente.")
 
-st.write("Centro de Investigación para el Trabajo. Todos los derechos reservados.")
+col1,col2,col3 = st.columns([1,2,1])
+with col2:
+    st.write("Centro de Investigación para el Trabajo. Todos los derechos reservados.")
