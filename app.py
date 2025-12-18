@@ -7,6 +7,7 @@ data_clean = pd.read_csv('data_clean.csv')
 
 # Título de la aplicación
 st.title("Estudio de la economía formal mexicana")
+st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
 
 # Crear tres columnas para los botones
 col1, col2, col3 = st.columns(3)
@@ -27,7 +28,7 @@ with col3:
         st.write("Se trata de la producción de bienes y servicios que no están registrados ni protegidos por el estado, incluyendo el trabajo y las empresas que operan fuera de los marcos legales y normativos.")
 
 st.subheader("Metodología del estudio")
-st.write("Para el presente estudio se obtuvieron los datos del “Sistema empresarial mexicano”, donde se hizo una limpieza de datos a fin de poder estudiar e ilustrar las actividades económicas registradas por el gobierno mexicano, y que se desarrollan en todo el pais, siendo su última actualización en junio de 2025.)
+st.write("Para el presente estudio se obtuvieron los datos del “Sistema empresarial mexicano”, donde se hizo una limpieza de datos a fin de poder estudiar e ilustrar las actividades económicas registradas por el gobierno mexicano, y que se desarrollan en todo el pais, siendo su última actualización en junio de 2025.")
 st.divider()  # Línea separadora
 st.write("Una vez que se pudo identificar la cantidad de empresas registradas, se les asignó un sector económico, a fin de poder comparar diferentes localidades. Se logró limpíar y valorar un 87 % de las actividades registradas por el gobierno mexicano. Los datos abiertos están aquí: https://datos.gob.mx/dataset/sistema_informacion_empresarial_mexicano")
 
@@ -137,3 +138,5 @@ if not sin_clasificar.empty:
     st.info(f"En este estado no se pudieron clasificar **{total_sin_clasificar}** empresas.")
 else:
     st.success("En este estado todas las empresas fueron clasificadas correctamente.")
+
+st.write("Centro de Investigación para el Trabajo. Todos los derechos reservados.")
