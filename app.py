@@ -7,9 +7,7 @@ data_clean = pd.read_csv('data_clean.csv')
 
 # Título de la aplicación
 st.title("Estudio de la economía formal mexicana")
-col1,col2 = st.columns([1,2])
-with col2:
-    st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
+st.markdown("<h1 style = 'text-align: right;'>Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.</h1>",unsafe_allow_html = True)
 
 # Crear tres columnas para los botones
 col1, col2, col3 = st.columns(3)
