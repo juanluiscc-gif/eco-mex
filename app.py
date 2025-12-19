@@ -7,7 +7,7 @@ data_clean = pd.read_csv('data_clean.csv')
 
 # Título de la aplicación
 st.title("Estudio de la economía formal mexicana")
-st.markdown("<style = 'text-align: right;'>Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.</>",unsafe_allow_html = True)
+st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
 
 # Crear tres columnas para los botones
 col1, col2, col3 = st.columns(3)
@@ -145,13 +145,13 @@ st.write("En la mayor parte de las economías locales de la república mexicana,
 print()
 st.write("Sin embargo, antes de concluir que la educación univesitaria es poco valiosa para el desarrollo económico, debemos tomar en cuenta que la actividad profesional básicamente atravieza todo el espectro laboral. Se enfatiza que los datos reflejan un registro de empresas, y que estos registros no incluyen la distribución de población profesional en las empresas estudiadas.")
 print()
-st.write("Es decir que se podrían realizar estudios más específicos para poder determinar la viabilidad de desarrollo económico de la educación universitaria, si pudieramos estudiar la forma en la que se distribuyen la población de profesionales entre los diversos sectores económicos.")
+st.write("Es decir que se podrían realizar estudios más específicos para poder determinar la viabilidad de desarrollo económico de la educación universitaria, si pudieramos estudiar la forma en la que se distribuyen la población de profesionales entre los diversos sectores económicos, realizando actividad profesional dentro de las diferentes empresas registradas.")
 print()
 st.write("Por otro lado, dado que el comercio se observa como la principal actividad económica en todo el pais, valdría la pena un estudio más profundo sobre la dicha actividad, a fin de poder determinar tanto sus necesidades como sus elementos más representativos.")
 st.divider()  # Línea separadora
 
-col1,col2,col3,col4,col5 = st.columns([1,1,2,1,1])
-with col3:
+col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
+with col2:
     st.write("Centro de Investigación para el Trabajo.")
 
 col1,col2,col3 = st.columns([1,2,1])
