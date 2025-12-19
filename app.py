@@ -154,7 +154,7 @@ col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 with col2:
     st.write("Centro de Investigación para el Trabajo.")
 with col3:
-    st.image("C:\Users\Juan Luis Cortés\Documents\GitHub\eco-mex\3.png")
+    st.image("C:/Users/Juan Luis Cortés/Documents/GitHub/eco-mex/3.png")
 
 col1,col2,col3 = st.columns([1,2,1])
 with col2:
