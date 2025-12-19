@@ -1,10 +1,11 @@
 import streamlit as st
+from PIL import Image
 import pandas as pd
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 data_clean = pd.read_csv('data_clean.csv')
-
+    
 # Título de la aplicación
 st.title("Estudio de la economía formal mexicana")
 st.write("Análisis y aplicación por Juan Luis Cortés Cervantes, Científico de Datos.")
@@ -151,10 +152,9 @@ st.write("Por otro lado, dado que el comercio se observa como la principal activ
 st.divider()  # Línea separadora
 
 col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
-with col2:
-    st.write("Centro de Investigación para el Trabajo.")
-with col3:
-    st.image("C:/Users/Juan Luis Cortés/Documents/GitHub/eco-mex/3.png")
+with col3: 
+    st.image("3.png")
+
 
 col1,col2,col3 = st.columns([1,2,1])
 with col2:
