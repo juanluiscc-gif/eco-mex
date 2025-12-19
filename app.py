@@ -151,10 +151,9 @@ print()
 st.write("Por otro lado, dado que el comercio se observa como la principal actividad económica en todo el pais, valdría la pena un estudio más profundo sobre la dicha actividad, a fin de poder determinar tanto sus necesidades como sus elementos más representativos.")
 st.divider()  # Línea separadora
 
-col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
-with col3: 
-    st.image("3.png")
-
+col1,col2,col3 = st.columns([1,2,1])
+with col2: 
+    st.image("3.png", use_column_width=True)
 
 col1,col2,col3 = st.columns([1,2,1])
 with col2:
