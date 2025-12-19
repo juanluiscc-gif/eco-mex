@@ -153,7 +153,7 @@ st.divider()  # Línea separadora
 
 col1,col2,col3 = st.columns([1,2,1])
 with col2: 
-    st.image("3.png", use_column_width=True)
+    st.image("3.png", width="auto")
 
 col1,col2,col3 = st.columns([1,2,1])
 with col2:
