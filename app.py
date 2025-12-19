@@ -139,8 +139,19 @@ if not sin_clasificar.empty:
 else:
     st.success("En este estado todas las empresas fueron clasificadas correctamente.")
 
-col1,col2,col3 = st.columns([1,2,1])
-with col2:
+st.divider()  # Línea separadora
+st.subheader("Conclusiones del estudio")
+st.write("En la mayor parte de las economías locales de la república mexicana, así como en los datos generales sobre la actividad económica, domina el tercer sector económico; particularmente la actividad del comercio. Se destaca que la actividad profesional se haya en una clara desventaja representativa, frente a la actividad comercial. Aún si reunimos las actividades agrupadas como educación, salud y turismo con la categoría denominada servicios profesionales; obtenemos un total del 15.5 porciento de la actividad económica en México.")
+print()
+st.write("Sin embargo, antes de concluir que la educación univesitaria es poco valiosa para el desarrollo económico, debemos tomar en cuenta que la actividad profesional básicamente atravieza todo el espectro laboral. Se enfatiza que los datos reflejan un registro de empresas, y que estos registros no incluyen la distribución de población profesional en las empresas estudiadas.")
+print()
+st.write("Es decir que se podrían realizar estudios más específicos para poder determinar la viabilidad de desarrollo económico de la educación universitaria, si pudieramos estudiar la forma en la que se distribuyen la población de profesionales entre los diversos sectores económicos.")
+print()
+st.write("Por otro lado, dado que el comercio se observa como la principal actividad económica en todo el pais, valdría la pena un estudio más profundo sobre la dicha actividad, a fin de poder determinar tanto sus necesidades como sus elementos más representativos.")
+st.divider()  # Línea separadora
+
+col1,col2,col3,col4,col5 = st.columns([1,1,2,1,1])
+with col3:
     st.write("Centro de Investigación para el Trabajo.")
 
 col1,col2,col3 = st.columns([1,2,1])
