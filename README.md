@@ -1,7 +1,7 @@
 # Análisis de sectores económicos mexicanos
 
 **Objetivo**  
-El presente estudio se realiza con el objetivo de ilustrar los datos oficiales sobre las actividades económicas que se desarrollan en México. Partimos de los datos oficiales de las autoridades mexicanas, para hacer un mapeo de la actividad económica. 
+El presente estudio se realiza para ilustrar y comparar los datos oficiales sobre las actividades económicas que se desarrollan en México. Partimos de los datos oficiales de las autoridades mexicanas, para hacer un mapeo de la actividad económica. Fue posible identificar patrones en la distribución de la actividad económica mexicana.
 
 ---
 
